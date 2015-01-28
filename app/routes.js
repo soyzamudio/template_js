@@ -55,4 +55,10 @@ module.exports = function(app, passport) {
     failureFlash : true // allow flash message
   }));
 
+  // process the login form
+  app.post('/login', passport.authenticate('local-login', {
+    successRedirect : '/profile', // redirect to the secure profile section
+    failureRedirect : '/login', // redirect back to the login page if there is an error
+    failureFlash : true  // allow flash message
+  }));
 }
